@@ -64,7 +64,7 @@ function bosonicHashfunc(Np::Int, col::Vector{Int})
 end
 
 
-function addParticleBosonic(singleCoef::Vector{Float64}, preState::QState)
+function addParticleBosonic(singleCoef::AbstractVector{<:Number}, preState::QState)
  	N = preState.QBasis.N
 	Np = preState.QBasis.Np
 	
@@ -95,7 +95,7 @@ function addParticleBosonic(singleCoef::Vector{Float64}, preState::QState)
 end
 
 
-function constructBosonicState(blochWaveFunc::Vector{<:Any})
+function constructBosonicState(blochWaveFunc::AbstractVector{<:Any})
 	@show size(blochWaveFunc[1,:,1])	
 	State = QState(blochWaveFunc[1][:,1], QBosonicBasis(size(blochWaveFunc[1])[1],1))
 	for i in 2:size(blochWaveFunc)[1]
