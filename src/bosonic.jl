@@ -88,7 +88,7 @@ function addParticleBosonic(singleCoef::AbstractVector{<:Number}, preState::QSta
 			#@show newCoef[rowIdx]
 			colOccRep[i] -= 1
 		end
-		@show newCoef
+		#@show newCoef
 	end
 	
 	return QState(newCoef, newQBasis)
@@ -96,7 +96,7 @@ end
 
 
 function constructBosonicState(blochWaveFunc::AbstractVector{<:Any})
-	@show size(blochWaveFunc[1,:,1])	
+	#@show size(blochWaveFunc[1,:,1])	
 	State = QState(blochWaveFunc[1][:,1], QBosonicBasis(size(blochWaveFunc[1])[1],1))
 	for i in 2:size(blochWaveFunc)[1]
 		State = addParticleBosonic(blochWaveFunc[i][:,1], State)
