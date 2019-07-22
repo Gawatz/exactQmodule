@@ -11,6 +11,9 @@ export bitSwap, bitCount, findFirstBit, getBitPos, FermionicBitSwap
 #from (2)
 export QState, getCijMatrix, projectOntoStates, entanglementHalfCut
 
+#from (3)
+export QBosonicBasis, addParticleBosonic, construcBosonicState, bosonicHashfunc
+
 #from 4
 export fermionicCr, QFermionicBasis, fermionicCrMatrix, addParticleFermionic, constructFermionicState, fermionicHashfunc
 

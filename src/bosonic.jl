@@ -36,7 +36,7 @@ function QBosonicBasis(N::Int, Np::Int)
 end
 
 
-function hashfunc(Np::Int, col::Vector{Int})
+function bosonicHashfunc(Np::Int, col::Vector{Int})
 	hashkey = 0
 	particlei = 1
 	p_i = findfirst(!iszero,col)
@@ -79,9 +79,9 @@ function addParticleBosonic(singleCoef::Vector{Float64}, preState::QState)
 			#@show colOccRep
 	 		colOccRep[i] += 1
 
-			# actualy this hashfunc gives directly idx in
+			# actualy this bosonicHashfunc gives directly idx in
 			# OccRep vector so no dict needed
-			rowIdx = hashfunc(Np+1, colOccRep)+1
+			rowIdx = bosonicHashfunc(Np+1, colOccRep)+1
 			#@show i,rowIdx
 			newCoef[rowIdx] +=  singleCoef[i]*preState.Coef[colIdx]*sqrt(colOccRep[i])
 		
@@ -92,4 +92,15 @@ function addParticleBosonic(singleCoef::Vector{Float64}, preState::QState)
 	end
 	
 	return QState(newCoef, newQBasis)
+end
+
+
+function constructBosonicState(blochWaveFunc::Vector{<:Any})
+	@show size(blochWaveFunc[1,:,1])	
+	State = QState(blochWaveFunc[1][:,1], QBosonicBasis(size(blochWaveFunc[1])[1],1))
+	for i in 2:size(blochWaveFunc)[1]
+		State = addParticleBosonic(blochWaveFunc[i][:,1], State)
+	end
+
+	return State
 end
