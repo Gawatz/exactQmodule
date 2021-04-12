@@ -103,7 +103,7 @@ function fermionicCr(State::AbstractVector{<:Number}, preQBasis::QFermionicBasis
 		#@show Idx
 		rowIdx = Idx[1] ⊻ (1<<(i-1)) 
 		#@show rowIdx
-		if rowIdx > Idx[1]
+		if rowIdx > Idx[1]   # if particle was at i rowIdx will be lower than initial Idx[1]
 			rowIdx  = Int(fermionicHashfunc(rowIdx)+1)
 			remainderBits = Idx[1] & Int(sum(2.0.^[j-1 for j = 1:(i-1)]))
 			NpreParticles = bitCount(remainderBits)

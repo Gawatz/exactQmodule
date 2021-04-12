@@ -39,9 +39,20 @@ function getBitPos(n::Int)
 	return Pos
 end
 
+"""
+    bitSwap(n, i, j)
 
-function bitSwap(n::Int, i::Int, j::Int)
-	
+swaps bit i with j in n, for e.g.
+
+n = 001001 , i = 1, j = 2 results in bitSwap(n,i,j) = 001010
+
+#Arguments
+- n: bit-string represented as an integer 
+- i: position of the first bit which should be swaped with the second
+- j: position of the second bit which should be swaped with the first
+
+"""
+function bitSwap(n::Int, i::Int, j::Int)	
 	i -= 1
 	j -= 1
 
@@ -58,7 +69,6 @@ end
 
 
 function FermionicBitSwap(n::Int, j::Int, k::Int)
-
 	n_new = bitSwap(n,j,k)
 	untouchedBit =  n & n_new	
 

@@ -1,7 +1,7 @@
 module exactQmodule
 
 using Base, SparseArrays, Arpack, LinearAlgebra
-using Combinatorics, KrylovKit
+using Combinatorics, KrylovKit, JLD
 
 export AbstractQBasis
 
@@ -9,7 +9,7 @@ export AbstractQBasis
 export bitSwap, bitCount, findFirstBit, getBitPos, FermionicBitSwap 
 
 #from (2)
-export QState, getCijMatrix, projectOntoStates, entanglementHalfCut
+export QState, shiftStateBasis, getCijMatrix, projectOntoStates, entanglementHalfCut
 
 #from (3)
 export QBosonicBasis, addParticleBosonic, constructBosonicState, bosonicHashfunc
