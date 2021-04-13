@@ -120,10 +120,6 @@ end
 fermionicCr(State::QState, i::Int, N::Int, Np::Int) = fermionicCr(State.Coef, State.QBasis, i, N, Np)
 
 
-
-
-
-
 function addParticleFermionic(singleCoef::AbstractVector{<:Number}, preState::QState)
  	N = preState.QBasis.N
 	Np = preState.QBasis.Np

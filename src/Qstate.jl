@@ -1,13 +1,9 @@
-#
-#	Quantum State struct
+i#	Quantum State struct
 #
 struct QState{T<:Number}
 	Coef::AbstractVector{T}
 	QBasis::Union{<:AbstractQBasis}
 end
-
-
-
 
 
 #
