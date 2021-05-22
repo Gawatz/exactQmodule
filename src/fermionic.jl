@@ -41,7 +41,7 @@ function QFermionicBasis(N::Int, Np::Int)
 end
 
 function fermionicCrMatrix(i::Int, N::Int, Np::Int; preQBasis::Union{AbstractQBasis, Nothing} = nothing)
-	N  >= Np+1 || throw(DomainError("you cannot creat more particles $(Np+1) then sites $N"))
+	N  >= Np+1 || throw(DomainError("you cannot creat more particles $(Np+1) than sites $N"))
 	if preQBasis == nothing
 		preQBasis = QFermionicBasis(N, Np)
 	else	
