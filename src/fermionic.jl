@@ -124,7 +124,7 @@ function addParticleFermionic(singleCoef::AbstractVector{<:Number}, preState::QS
  	N = preState.QBasis.N
 	Np = preState.QBasis.Np
 	
-	N >= Np+1 || throw(DomainError("you cannot creat more particles $(Np+1) then sites $N"))
+	N >= Np+1 || throw(DomainError("you cannot creat more particles $(Np+1) than sites $N"))
 
 	newQBasis = QFermionicBasis(N,Np+1)
 	newCoef = zeros(ComplexF64,newQBasis.Dim)

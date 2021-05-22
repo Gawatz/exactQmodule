@@ -1,4 +1,5 @@
-i#	Quantum State struct
+#
+#	Quantum State struct
 #
 struct QState{T<:Number}
 	Coef::AbstractVector{T}
@@ -11,7 +12,7 @@ end
 #
 
 # shits basis of periodic state by one to the right 11000 -> 10001 useful to obtain entanglement 
-# at inter or inter unitcell cut
+# at different cut (for instance intra unit-cell cut instead of inter for a 2 site unite-cell system
 function shiftStateBasis(state::QState)	
 	new_coef = zeros(eltype(state.Coef),size(state.Coef))
 	@inbounds for x in state.QBasis.OccRep
@@ -27,7 +28,6 @@ function shiftStateBasis(state::QState)
 
 		new_idx = fermionicHashfunc(new_n)+1
 
-		# maybe have to get minus sign for shifting electron thorugh pbc bond?
 		new_coef[new_idx] = state.Coef[x[2]]
 
 	end
@@ -187,6 +187,8 @@ function entanglementHalfCut(Coef::AbstractVector{<:Number}, N::Int, Np::Int; Ba
 			svdHandle = svds(CoefMatrix, nsv = k)
 			svdHandle2 = svdsolve(CoefMatrix, k)
 		catch
+			# replace by more meaningful analysis of the issue 
+			# add logging for the package 
 			@show "something went wrong"
 		end
 		quality = sum(svdHandle[1].S.^2.0)
