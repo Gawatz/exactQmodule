@@ -101,8 +101,8 @@ function FermionicBitSwap(n::Int, j::Int, k::Int)
 	
 	inbetween = j<k ? (j+1:k-1) : (k+1:j-1)
 	c = Int(sum(2.0.^[x-1 for x in inbetween]))
-	jumped_C = bitCount(untouchedBit & c)
-	return n_new, (-1)^jumped_C
+	overjumped_fermions = bitCount(untouchedBit & c)
+	return n_new, (-1)^overjumped_fermions
 end
 
 
