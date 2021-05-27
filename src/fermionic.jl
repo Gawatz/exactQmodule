@@ -33,7 +33,6 @@ function QFermionicBasis(N::Int, Np::Int)
 		
 		nReducedBasis = Int(fermionicHashfunc(nidx)+1)
 		push!(OccRep,(nidx,nReducedBasis))
-
 	end
 
 	OccRep = OccRep[end:-1:1]
@@ -143,11 +142,8 @@ function addParticleFermionic(singleCoef::AbstractVector{<:Number}, preState::QS
 
 				c = NpreParticles%2 == 0 ? 1 : -1
 				newCoef[rowIdx] += c*singleCoef[i]*preState.Coef[Idx[2]]
-			  
 			end
 		end
-	
-	
 	end
 	
 	return QState(newCoef, newQBasis)
