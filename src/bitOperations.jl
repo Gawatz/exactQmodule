@@ -71,34 +71,6 @@ end
 function FermionicBitSwap(n::Int, j::Int, k::Int)
 	n_new = bitSwap(n,j,k)
 	untouchedBit =  n & n_new	
-
-	#=
-	bitParticipating = n ⊻ n_new
-	@show bitParticipating
-	actionOnN = n & bitParticipating
-	@show actionOnN
-	actionOnN_new = n_new & bitParticipating
-	@show actionOnN_new
-	a = getBitPos(actionOnN)[1]
-	@show a
-	c = Int(sum(2.0.^[x for x in a:L]))
- 	@show c
-	@show untouchedBit & c
-	jumped_C = bitCount(untouchedBit & c)
-	@show jumped_C
-
-	a = getBitPos(actionOnN_new)[1]
-	@show a
-	c = Int(sum(2.0.^[x for x in a:L]))
-	@show c
-	@show untouchedBit & c
-	jumped_Cdagger = bitCount(untouchedBit & c)
-	
-	@show jumped_Cdagger
-	
-	return (-1)^(jumped_C+jumped_Cdagger)
-	=#
-	
 	inbetween = j<k ? (j+1:k-1) : (k+1:j-1)
 	c = Int(sum(2.0.^[x-1 for x in inbetween]))
 	overjumped_fermions = bitCount(untouchedBit & c)
